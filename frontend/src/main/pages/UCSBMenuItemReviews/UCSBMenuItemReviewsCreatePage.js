@@ -42,7 +42,7 @@ export default function UCSBMenuItemReviewsCreatePage({storybook=false}) {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Create New UCSBMenuItemReview</h1>
+        <h1>Create New MenuItemReview</h1>
 
         <UCSBMenuItemReviewForm submitAction={onSubmit} />
 
