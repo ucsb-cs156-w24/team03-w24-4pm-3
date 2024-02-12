@@ -59,7 +59,7 @@ function UCSBMenuItemReviewForm({ initialContents, submitAction, buttonLabel = "
                             {...register("itemId", { required: true })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.itemId?.message}
+                            {errors.itemId && 'Menu Item ID is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -68,7 +68,7 @@ function UCSBMenuItemReviewForm({ initialContents, submitAction, buttonLabel = "
             <Row>
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="reviewerEmail">Reviewer Email</Form.Label>
+                        <Form.Label htmlFor="reviewerEmail">Email</Form.Label>
                         <Form.Control
                             data-testid="UCSBMenuItemReviewForm-reviewerEmail"
                             id="reviewerEmail"
@@ -77,7 +77,7 @@ function UCSBMenuItemReviewForm({ initialContents, submitAction, buttonLabel = "
                             {...register("reviewerEmail", { required: true })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.reviewerEmail?.message}
+                            {errors.reviewerEmail && 'Email is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -92,10 +92,12 @@ function UCSBMenuItemReviewForm({ initialContents, submitAction, buttonLabel = "
                             id="stars"
                             type="number"
                             isInvalid={Boolean(errors.stars)}
-                            {...register("stars", { required: true })}
+                            {...register("stars", { required: true, min: 1, max: 5})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.stars?.message}
+                            {errors.stars && 'Stars are required. '}
+                            {errors.stars?.type === 'min' && "Minimum rating of 1 star"}
+                            {errors.stars?.type === 'max' && "Maximum rating of 5 stars"}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -113,7 +115,7 @@ function UCSBMenuItemReviewForm({ initialContents, submitAction, buttonLabel = "
                             {...register("dateReviewed", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateReviewed && 'DateReviewed is required. '}
+                            {errors.dateReviewed && 'Date is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -128,7 +130,7 @@ function UCSBMenuItemReviewForm({ initialContents, submitAction, buttonLabel = "
                             id="comments"
                             type="text"
                             isInvalid={Boolean(errors.comments)}
-                            {...register("comments", { required: true })}
+                            {...register("comments", { required: false })}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.comments?.message}
