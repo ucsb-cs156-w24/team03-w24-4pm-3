@@ -130,7 +130,7 @@ function UCSBMenuItemReviewForm({ initialContents, submitAction, buttonLabel = "
                             id="comments"
                             type="text"
                             isInvalid={Boolean(errors.comments)}
-                            {...register("comments", { required: false })}
+                            {...register("comments", {})}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.comments?.message}
