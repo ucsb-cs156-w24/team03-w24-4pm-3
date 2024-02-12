@@ -1,14 +1,43 @@
+import React from 'react'
+import { useBackend } from 'main/utils/useBackend';
+
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+import UCSBMenuItemReviewsTable from 'main/components/UCSBMenuItemReviews/UCSBMenuItemReviewsTable';
+import { Button } from 'react-bootstrap';
+import { useCurrentUser , hasRole} from 'main/utils/currentUser';
 
 export default function UCSBMenuItemReviewsIndexPage() {
 
-  // Stryker disable all : placeholder for future implementation
+  const currentUser = useCurrentUser();
+
+  const createButton = () => {
+    if (hasRole(currentUser, "ROLE_ADMIN")) {
+        return (
+            <Button
+                variant="primary"
+                href="/menuitemreviews/create"
+                style={{ float: "right" }}
+            >
+                Create MenuItemReview 
+            </Button>
+        )
+    } 
+  }
+  
+  const { data: menuitemreviews, error: _error, status: _status } =
+    useBackend(
+      // Stryker disable next-line all : don't test internal caching of React Query
+      ["/api/ucsbmenuitemreviews/all"],
+      { method: "GET", url: "/api/ucsbmenuitemreviews/all" },
+      []
+    );
+
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Index page not yet implemented</h1>
-        <p><a href="/placeholder/create">Create</a></p>
-        <p><a href="/placeholder/edit/1">Edit</a></p>
+        {createButton()}
+        <h1>MenuItemReviews</h1>
+        <UCSBMenuItemReviewsTable menuItemReviews={menuitemreviews} currentUser={currentUser} />
       </div>
     </BasicLayout>
   )
