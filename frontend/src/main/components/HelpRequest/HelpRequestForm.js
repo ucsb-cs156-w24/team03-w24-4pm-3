@@ -1,6 +1,6 @@
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
@@ -9,6 +9,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
         register,
         formState: { errors },
         handleSubmit,
+        watch
     } = useForm(
         { defaultValues: initialContents || {}, }
     );
@@ -114,6 +115,20 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                         </Form.Control.Feedback>
                     </Form.Group>
 
+                    <Form.Group className="mb-3" >
+                        <Form.Check
+                            type="switch"
+                            id="solved"
+                            data-testid={testIdPrefix + "solved"}
+                            label="Solved"
+                            checked={watch("solved")}
+                            isInvalid={Boolean(errors.solved)}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.solved?.message}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+
                     <Button
                         type="submit"
                         data-testid={testIdPrefix + "submit"}
@@ -132,4 +147,4 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
     )
 }
 
-export default UCSBDateForm;
+export default HelpRequestForm;

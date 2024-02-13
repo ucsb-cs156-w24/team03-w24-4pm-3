@@ -41,7 +41,7 @@ describe("HelpRequestForm tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
-                    <HelpRequestForm initialContents={helpRequestFixtures.oneHelpRequest} />
+                    <HelpRequestForm initialContents={helpRequestFixtures.oneRequest} />
                 </Router>
             </QueryClientProvider>
         );
@@ -64,18 +64,20 @@ describe("HelpRequestForm tests", () => {
     test("Correct Error messsages on missing input", async () => {
 
         render(
-            <QueryClientProvider client={queryClient}>
                 <Router>
                     <HelpRequestForm />
                 </Router>
-            </QueryClientProvider>
         );
-        expect(await screen.findByTestId(`${testId}-cancel`)).toBeInTheDocument();
-        const cancelButton = screen.getByTestId(`${testId}-cancel`);
+        await screen.findByTestId("HelpRequestForm-submit");
+        const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
-        fireEvent.click(cancelButton);
+        fireEvent.click(submitButton);
 
-        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(-1));
+        await screen.findByText(/TeamID is required./);
+        expect(screen.getByText(/RequesterEmail is required./)).toBeInTheDocument();
+        expect(screen.getByText(/RequestTime is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
+        expect(screen.getByText(/TableOrBreakoutRoom is required./)).toBeInTheDocument();
     });
 
     test("that the correct validations are performed", async () => {
