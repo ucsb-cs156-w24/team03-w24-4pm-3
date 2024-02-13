@@ -105,7 +105,7 @@ describe("UCSBMenuItemReviewsCreatePage tests", () => {
         });
 
         expect(mockToast).toBeCalledWith("New menuItemReview Created - id: 17 itemId: 3 stars: 5");
-        expect(mockNavigate).toBeCalledWith({ "to": "/ucsbmenuitemreviews" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
     });
 
 

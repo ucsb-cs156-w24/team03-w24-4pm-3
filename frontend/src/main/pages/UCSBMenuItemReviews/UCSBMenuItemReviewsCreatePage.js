@@ -36,7 +36,7 @@ export default function UCSBMenuItemReviewsCreatePage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/ucsbmenuitemreviews" />
+    return <Navigate to="/menuitemreview" />
   }
 
   return (

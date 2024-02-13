@@ -163,7 +163,7 @@ describe("UCSBMenuItemReviewTable tests", () => {
     fireEvent.click(editButton);
 
     // assert - check that the navigate function was called with the expected path
-    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbmenuitemreviews/edit/3'));
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/menuitemreview/edit/3'));
 
   });
 

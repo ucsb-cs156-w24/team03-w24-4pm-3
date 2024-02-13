@@ -171,7 +171,7 @@ describe("UCSBMenuItemReviewsEditPage tests", () => {
 
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("MenuItemReview Updated - id: 17 itemId: 2345 stars: 4");
-            expect(mockNavigate).toBeCalledWith({ "to": "/ucsbmenuitemreviews" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ id: 17 });

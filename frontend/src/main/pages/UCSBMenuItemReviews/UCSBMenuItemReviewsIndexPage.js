@@ -15,7 +15,7 @@ export default function UCSBMenuItemReviewsIndexPage() {
         return (
             <Button
                 variant="primary"
-                href="/menuitemreviews/create"
+                href="/menuitemreview/create"
                 style={{ float: "right" }}
             >
                 Create MenuItemReview 
