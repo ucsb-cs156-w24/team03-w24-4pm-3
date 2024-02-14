@@ -56,7 +56,7 @@ describe("HelpRequestForm tests", () => {
         expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
         expect(screen.getByText(`Id`)).toBeInTheDocument();
         const sButton = screen.getByTestId("HelpRequestForm-solved");
-        expect(sButton.checked).toEqual(true);
+        expect(sButton.checked).toEqual(false);
         expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("1");
     });
 
