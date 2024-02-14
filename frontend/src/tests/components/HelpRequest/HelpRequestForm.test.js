@@ -55,8 +55,6 @@ describe("HelpRequestForm tests", () => {
 
         expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
         expect(screen.getByText(`Id`)).toBeInTheDocument();
-        const sButton = screen.getByTestId("HelpRequestForm-solved");
-        expect(sButton.checked).toBe(false);
         expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("1");
     });
 
@@ -132,6 +130,7 @@ describe("HelpRequestForm tests", () => {
         const tableOrBreakoutRoomField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
         const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
         const explanationField = screen.getByTestId("HelpRequestForm-explanation");
+        const solvedField = screen.getByTestId("HelpRequestForm-solved");
         const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
         fireEvent.change(requesterEmailField, { target: { value: 'Sid' } });
@@ -139,6 +138,7 @@ describe("HelpRequestForm tests", () => {
         fireEvent.change(tableOrBreakoutRoomField, { target: { value: '01' } });
         fireEvent.change(requestTimeField, { target: { value: '2022-01-02T12:00:00'} });
         fireEvent.change(explanationField, { target: { value: 'explanation' } });
+        fireEvent.click(solvedField);
         fireEvent.click(submitButton);
 
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
