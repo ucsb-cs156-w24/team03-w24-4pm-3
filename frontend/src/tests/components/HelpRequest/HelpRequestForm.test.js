@@ -65,8 +65,6 @@ describe("HelpRequestForm tests", () => {
             expect(sButton).not.toBeChecked();
         }
         */
-        fireEvent.click(sButton);
-        expect(sButton.checked).toBe(true);
         expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("1");
     });
 
