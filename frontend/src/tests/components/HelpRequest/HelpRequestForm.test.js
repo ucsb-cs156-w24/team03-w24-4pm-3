@@ -41,7 +41,7 @@ describe("HelpRequestForm tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
-                    <HelpRequestForm initialContents={helpRequestFixtures.oneRequest} />
+                    <HelpRequestForm    Contents={helpRequestFixtures.oneRequest} />
                 </Router>
             </QueryClientProvider>
         );
@@ -57,7 +57,7 @@ describe("HelpRequestForm tests", () => {
         expect(screen.getByText(`Id`)).toBeInTheDocument();
         const sButton = screen.getByTestId("HelpRequestForm-solved");
         expect(sButton.checked).toEqual(false);
-        expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("01");
+        expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("1");
     });
 
 
