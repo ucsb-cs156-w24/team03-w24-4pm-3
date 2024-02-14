@@ -41,8 +41,8 @@ export default function HelpRequestTable({
             accessor: 'requesterEmail',
         },
         {
-            Header: 'TeamID',
-            accessor: 'teamID',
+            Header: 'TeamId',
+            accessor: 'teamId',
         },
         {
             Header: 'TableOrBreakoutRoom',
