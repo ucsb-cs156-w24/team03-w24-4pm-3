@@ -8,7 +8,7 @@ const helpRequestFixtures = {
             "tableOrBreakoutRoom": "01",
             "requestTime": "2022-01-02T12:00:00",
             "explanation": "Dokku problems",
-            "solved": "False"
+            "solved": true
         }
     ],
     threeRequests: 
@@ -20,7 +20,7 @@ const helpRequestFixtures = {
             "tableOrBreakoutRoom": "01",
             "requestTime": "2022-01-02T12:00:00",
             "explanation": "Dokku issues",
-            "solved": "True"
+            "solved": true
         },
         {
             "id": 3,
@@ -29,7 +29,7 @@ const helpRequestFixtures = {
             "tableOrBreakoutRoom": "02",
             "requestTime": "2022-04-03T12:00:00",
             "explanation": "Swagger problems",
-            "solved": "False"
+            "solved": false
         },
         {
             "id": 4,
@@ -38,7 +38,7 @@ const helpRequestFixtures = {
             "tableOrBreakoutRoom": "03",
             "requestTime": "2022-07-04T12:00:00",
             "explanation": "Merge conflict",
-            "solved": "True"
+            "solved": true
         }
     ]
 };

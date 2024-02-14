@@ -41,7 +41,7 @@ describe("HelpRequestForm tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
-                    <HelpRequestForm initialContents={helpRequestFixtures.oneHelpRequest} />
+                    <HelpRequestForm    initialContents={helpRequestFixtures.oneRequest[0]} />
                 </Router>
             </QueryClientProvider>
         );
@@ -63,6 +63,24 @@ describe("HelpRequestForm tests", () => {
 
     test("Correct Error messsages on missing input", async () => {
 
+        render(
+                <Router>
+                    <HelpRequestForm />
+                </Router>
+        );
+        await screen.findByTestId("HelpRequestForm-submit");
+        const submitButton = screen.getByTestId("HelpRequestForm-submit");
+
+        fireEvent.click(submitButton);
+
+        await screen.findByText(/TeamID is required./);
+        expect(screen.getByText(/RequesterEmail is required./)).toBeInTheDocument();
+        expect(screen.getByText(/RequestTime is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
+        expect(screen.getByText(/TableOrBreakoutRoom is required./)).toBeInTheDocument();
+    });
+
+    test("that navigate(-1) is called when Cancel is clicked", async () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
@@ -104,7 +122,7 @@ describe("HelpRequestForm tests", () => {
 
         render(
             <Router  >
-                <UCSBDateForm submitAction={mockSubmitAction} />
+                <HelpRequestForm submitAction={mockSubmitAction} />
             </Router>
         );
         await screen.findByTestId("HelpRequestForm-requesterEmail");
