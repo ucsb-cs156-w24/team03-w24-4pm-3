@@ -8,7 +8,7 @@ const helpRequestFixtures = {
             "tableOrBreakoutRoom": "01",
             "requestTime": "2022-01-02T12:00:00",
             "explanation": "Dokku problems",
-            "solved": false
+            "solved": true
         }
     ],
     threeRequests: 
