@@ -80,6 +80,22 @@ describe("HelpRequestForm tests", () => {
         expect(screen.getByText(/TableOrBreakoutRoom is required./)).toBeInTheDocument();
     });
 
+    test("that navigate(-1) is called when Cancel is clicked", async () => {
+        render(
+            <QueryClientProvider client={queryClient}>
+                <Router>
+                    <HelpRequestForm />
+                </Router>
+            </QueryClientProvider>
+        );
+        expect(await screen.findByTestId(`${testId}-cancel`)).toBeInTheDocument();
+        const cancelButton = screen.getByTestId(`${testId}-cancel`);
+
+        fireEvent.click(cancelButton);
+
+        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(-1));
+    });
+
     test("that the correct validations are performed", async () => {
         render(
             <QueryClientProvider client={queryClient}>
@@ -106,7 +122,7 @@ describe("HelpRequestForm tests", () => {
 
         render(
             <Router  >
-                <UCSBDateForm submitAction={mockSubmitAction} />
+                <HelpRequestForm submitAction={mockSubmitAction} />
             </Router>
         );
         await screen.findByTestId("HelpRequestForm-requesterEmail");

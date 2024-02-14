@@ -1,4 +1,4 @@
-import { Button, Form, Row, Col } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 
@@ -77,7 +77,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             type="text"
                             isInvalid={Boolean(errors.tableOrBreakoutRoom)}
                             {...register("tableOrBreakoutRoom", {
-                                required: "tableOrBreakoutRoom is required."})}
+                                required: "TableOrBreakoutRoom is required."})}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.tableOrBreakoutRoom?.message}
