@@ -41,8 +41,8 @@ export default function HelpRequestTable({
             accessor: 'requesterEmail',
         },
         {
-            Header: 'TeamId',
-            accessor: 'teamId',
+            Header: 'TeamID',
+            accessor: 'teamID',
         },
         {
             Header: 'TableOrBreakoutRoom',
@@ -59,6 +59,7 @@ export default function HelpRequestTable({
         {
             Header: 'Solved',
             accessor: 'solved',
+            Cell: ({ value }) => value.toString(),
         }
     ];
 
