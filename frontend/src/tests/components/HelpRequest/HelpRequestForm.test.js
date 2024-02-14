@@ -57,7 +57,7 @@ describe("HelpRequestForm tests", () => {
         expect(screen.getByText(`Id`)).toBeInTheDocument();
         const sButton = screen.getByTestId("HelpRequestForm-solved");
         // const expectedCheckedState = helpRequestFixtures.oneRequest[0].solved == "False";
-        expect(sButton.checked).toBe(false);
+        expect(sButton.checked).toEqual(false);
         /*
         if (helpRequestFixtures.oneRequest[0].solved) {
             expect(sButton).toBeChecked();
@@ -65,6 +65,8 @@ describe("HelpRequestForm tests", () => {
             expect(sButton).not.toBeChecked();
         }
         */
+        fireEvent.click(sButton);
+        expect(sButton.checked).toEqual(true);
         expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("1");
     });
 
