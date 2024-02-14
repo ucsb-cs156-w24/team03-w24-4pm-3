@@ -41,7 +41,7 @@ describe("HelpRequestForm tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
-                    <HelpRequestForm    Contents={helpRequestFixtures.oneRequest} />
+                    <HelpRequestForm    Contents={helpRequestFixtures.oneRequest[0]} />
                 </Router>
             </QueryClientProvider>
         );
