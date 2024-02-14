@@ -59,7 +59,6 @@ export default function HelpRequestTable({
         {
             Header: 'Solved',
             accessor: 'solved',
-            Cell: ({ value }) => value.toString(),
         }
     ];
 
