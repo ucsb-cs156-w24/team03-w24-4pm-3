@@ -70,7 +70,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                     </Form.Group>
 
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="tableOrBreakoutRoom">tableOrBreakoutRoom</Form.Label>
+                        <Form.Label htmlFor="tableOrBreakoutRoom">TableOrBreakoutRoom</Form.Label>
                         <Form.Control
                             data-testid={testIdPrefix + "tableOrBreakoutRoom"}
                             id="tableOrBreakoutRoom"
