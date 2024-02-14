@@ -82,6 +82,7 @@ describe("UserTable tests", () => {
 
     });
 
+    
 
     test("Has the expected column headers, content for ordinary user", () => {
         // arrange
