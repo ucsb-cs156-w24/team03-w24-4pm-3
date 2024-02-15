@@ -95,8 +95,7 @@ describe("HelpRequestCreatePage tests", () => {
         const solvedInput = screen.getByTestId("HelpRequestForm-solved");
         expect(solvedInput).toBeInTheDocument();
 
-        const submitInput = screen.getByTestId("HelpRequestForm-submit");
-        expect(submitInput).toBeInTheDocument();
+        const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
         fireEvent.change(emailInput, { target: { value: 'one@ucsb.edu' } })
         fireEvent.change(teamInput, { target: { value: '01' } })
