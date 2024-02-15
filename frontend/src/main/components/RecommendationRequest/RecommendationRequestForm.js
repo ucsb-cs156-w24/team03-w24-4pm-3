@@ -21,7 +21,9 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
 
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-
+    
+    // Stryker disable next-line Regex
+    const email_regex = /[a-zA-Z0-9]@[a-zA-Z0-9]+\.[a-zA-Z]/i;
 
     return (
 
@@ -56,12 +58,11 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             id="requesterEmail"
                             type="text"
                             isInvalid={Boolean(errors.requesterEmail)}
-                            {...register("requesterEmail", {
-                                required: "RequesterEmail is required."
-                            })}
+                            {...register("requesterEmail", { required: true, pattern: email_regex})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requesterEmail?.message}
+                            {errors.requesterEmail && "Requester Email is required."}
+                            {errors.requesterEmail?.type === "pattern" && "Requester Email must be a valid email."}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -76,12 +77,11 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             id="professorEmail"
                             type="text"
                             isInvalid={Boolean(errors.professorEmail)}
-                            {...register("professorEmail", {
-                                required: "ProfessorEmail is required."
-                            })}
+                            {...register("professorEmail", { required: true, pattern: email_regex})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.professorEmail?.message}
+                        {errors.professorEmail && "Professor Email is required."}
+                        {errors.professorEmail?.type === "pattern" && "Professor Email must be a valid email."}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -119,7 +119,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             {...register("dateRequested", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateRequested && 'DateRequested is required. '}
+                            {errors.dateRequested && 'Date Requested is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -137,7 +137,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             {...register("dateNeeded", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateNeeded && 'DateNeeded is required. '}
+                            {errors.dateNeeded && 'Date Needed is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -150,15 +150,10 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                         <Form.Control
                             data-testid="RecommendationRequestForm-done"
                             id="done"
-                            type="boolean"
+                            type="switch"
                             isInvalid={Boolean(errors.done)}
-                            {...register("done", {
-                                required: "Done is required."
-                            })}
+                            {...register("done")}
                         />
-                        <Form.Control.Feedback type="invalid">
-                            {errors.done?.message}
-                        </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             </Row>
