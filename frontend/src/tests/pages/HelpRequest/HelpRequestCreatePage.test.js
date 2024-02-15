@@ -74,29 +74,29 @@ describe("HelpRequestCreatePage tests", () => {
         )
 
         await waitFor(() => {
-            expect(screen.getByTestId("HelpRequestForm-requesterEmail")).toBeInTheDocument();
+            expect(screen.getByLabelText("RequesterEmail")).toBeInTheDocument();
         });
 
-        const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
+        const emailInput = screen.getByLabelText("RequesterEmail");
         expect(emailInput).toBeInTheDocument();
 
-        const teamIdField = screen.getByTestId("HelpRequestForm-teamID");
+        const teamInput = screen.getByLabelText("TeamId");
         expect(teamInput).toBeInTheDocument();
 
-        const tableOrBreakoutRoomEmailField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
+        const tableInput = screen.getByLabelText("TableOrBreakoutRoom");
         expect(tableInput).toBeInTheDocument();
 
-        const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+        const timeInput = screen.getByLabelText("RequestTime");
         expect(timeInput).toBeInTheDocument();
 
-        const explanationField = screen.getByTestId("HelpRequestForm-explanation");
+        const explanationInput = screen.getByLabelText("Explanation");
         expect(explanationInput).toBeInTheDocument();
 
         const solvedInput = screen.getByTestId("HelpRequestForm-solved");
         expect(solvedInput).toBeInTheDocument();
 
-        const submitButton = screen.getByTestId("HelpRequestForm-submit");
-        expect(createButton).toBeInTheDocument();
+        const submitInput = screen.getByTestId("HelpRequestForm-submit");
+        expect(submitInput).toBeInTheDocument();
 
         fireEvent.change(emailInput, { target: { value: 'one@ucsb.edu' } })
         fireEvent.change(teamInput, { target: { value: '01' } })
@@ -104,7 +104,7 @@ describe("HelpRequestCreatePage tests", () => {
         fireEvent.change(timeInput, { target: { value: '2022-02-02T00:00' } })
         fireEvent.change(explanationInput, { target: { value: "Dokku" } })
         fireEvent.change(solvedInput, { target: { value: true } })
-        fireEvent.click(createButton);
+        fireEvent.click(submitButton);
 
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
