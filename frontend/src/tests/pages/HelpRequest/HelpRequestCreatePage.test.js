@@ -118,7 +118,7 @@ describe("HelpRequestCreatePage tests", () => {
 
         // assert - check that the toast was called with the expected message
         expect(mockToast).toBeCalledWith("New helpRequest Created - id: 17 requesterEmail: FakeElfouly@ucsb.edu");
-        expect(mockNavigate).toBeCalledWith({ "to": "/helpRequest" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/helprequest" });
 
     });
 });
