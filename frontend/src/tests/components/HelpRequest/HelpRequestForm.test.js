@@ -16,7 +16,7 @@ jest.mock('react-router-dom', () => ({
 describe("HelpRequestForm tests", () => {
     const queryClient = new QueryClient();
 
-    const expectedHeaders = ["RequesterEmail", "TeamID", "TableOrBreakoutRoom", "Explanation"];
+    const expectedHeaders = ["RequesterEmail", "TeamId", "TableOrBreakoutRoom", "Explanation"];
     const testId = "HelpRequestForm";
 
     test("renders correctly with no initialContents", async () => {
@@ -110,7 +110,7 @@ describe("HelpRequestForm tests", () => {
         fireEvent.click(submitButton);
 
         await screen.findByText(/RequesterEmail is required/);
-        expect(screen.getByText(/TeamID is required/)).toBeInTheDocument();
+        expect(screen.getByText(/TeamId is required/)).toBeInTheDocument();
         expect(screen.getByText(/TableOrBreakoutRoom is required/)).toBeInTheDocument();
         expect(screen.getByText(/Explanation is required/)).toBeInTheDocument();
     
@@ -128,7 +128,7 @@ describe("HelpRequestForm tests", () => {
         await screen.findByTestId("HelpRequestForm-requesterEmail");
 
         const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
-        const teamIDField = screen.getByTestId("HelpRequestForm-teamID");
+        const teamIdField = screen.getByTestId("HelpRequestForm-teamId");
         const tableOrBreakoutRoomField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
         const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
         const explanationField = screen.getByTestId("HelpRequestForm-explanation");
