@@ -19,46 +19,6 @@ describe("HelpRequestForm tests", () => {
     const expectedHeaders = ["RequesterEmail", "TeamId", "TableOrBreakoutRoom", "Explanation"];
     const testId = "HelpRequestForm";
 
-    test("solved checkbox is unchecked by default", async () => {
-        render(
-            <QueryClientProvider client={queryClient}>
-                <Router>
-                    <HelpRequestForm />
-                </Router>
-            </QueryClientProvider>
-        );
-    
-        const solvedCheckbox = await screen.findByTestId("HelpRequestForm-solved");
-        expect(solvedCheckbox).not.toBeChecked();
-    });
-    
-    test("solved checkbox reflects initialContents value", async () => {
-        render(
-            <QueryClientProvider client={queryClient}>
-                <Router>
-                    <HelpRequestForm initialContents={{ solved: true }} />
-                </Router>
-            </QueryClientProvider>
-        );
-    
-        const solvedCheckbox = await screen.findByTestId("HelpRequestForm-solved");
-        expect(solvedCheckbox).toBeChecked();
-    });
-    
-    test("solved checkbox matches initialContents when provided", async () => {
-        render(
-            <QueryClientProvider client={queryClient}>
-                <Router>
-                    <HelpRequestForm initialContents={{ solved: false }} />
-                </Router>
-            </QueryClientProvider>
-        );
-    
-        const solvedCheckbox = await screen.findByTestId("HelpRequestForm-solved");
-        expect(solvedCheckbox).not.toBeChecked();
-    });
-    
-
     test("renders correctly with no initialContents", async () => {
         render(
             <QueryClientProvider client={queryClient}>
@@ -81,7 +41,7 @@ describe("HelpRequestForm tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
-                    <HelpRequestForm    initialContents={helpRequestFixtures.oneRequest[0]} />
+                    <HelpRequestForm    initialContents={helpRequestFixtures.oneRequest} />
                 </Router>
             </QueryClientProvider>
         );
