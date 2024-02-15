@@ -56,7 +56,7 @@ describe("HelpRequestCreatePage tests", () => {
         const helpRequest = {
             id: 17,
             requesterEmail: "one@gmail.com",
-            teamId: "w24-4pm-3",
+            teamId: "01",
             tableOrBreakoutRoom: "Table 7",
             requestTime: "2024-02-02T12:00:00",
             explanation: "Dokku problems",
@@ -86,7 +86,7 @@ describe("HelpRequestCreatePage tests", () => {
         const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
         fireEvent.change(requesterEmailField, { target: { value: 'one@gmail.com' } });
-        fireEvent.change(teamIdField, { target: { value: 'w24-4pm-3' } });
+        fireEvent.change(teamIdField, { target: { value: '01' } });
         fireEvent.change(tableOrBreakoutRoomField, { target: { value: 'Table 7' } });
         fireEvent.change(requestTimeField, { target: { value: '2024-02-02T12:00:00' } });
         fireEvent.change(explanationField, { target: { value: 'Dokku problems' } });
@@ -101,7 +101,7 @@ describe("HelpRequestCreatePage tests", () => {
         expect(axiosMock.history.post[0].params).toEqual(
             {
             "requesterEmail": "one@gmail.com",
-            "teamId": "w24-4pm-3",
+            "teamId": "01",
             "tableOrBreakoutRoom": "Table 7",
             "requestTime": "2024-02-02T12:00",
             "explanation": "Dokku problems",
