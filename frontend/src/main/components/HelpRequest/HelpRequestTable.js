@@ -22,7 +22,7 @@ export default function HelpRequestTable({
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/helpRequest/all"]
+        ["/api/helprequests/all"]
     );
     // Stryker restore all 
 
@@ -33,7 +33,7 @@ export default function HelpRequestTable({
     const columns = [
         {
             Header: 'id',
-            accessor: 'id', // accessor is the "key" in the data
+            accessor: 'id', 
         },
 
         {

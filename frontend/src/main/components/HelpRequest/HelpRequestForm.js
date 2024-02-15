@@ -1,6 +1,7 @@
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
@@ -21,6 +22,15 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
     // Note that even this complex regex may still need some tweaks
 
     const testIdPrefix = "HelpRequestForm-";
+    const handleSolvedChange = (e) => {
+        setValue("solved", e.target.checked); // Update "solved" value
+    };
+
+    useEffect(() => {
+        if (!initialContents?.hasOwnProperty("solved")) {
+            setValue("solved", false);
+        }
+    }, [initialContents, setValue]);
 
     return (
 
@@ -123,6 +133,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             label="Solved"
                             checked={watch("solved")}
                             isInvalid={Boolean(errors.solved)}
+                            onChange={handleSolvedChange}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.solved?.message}
