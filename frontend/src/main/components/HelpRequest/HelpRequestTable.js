@@ -22,7 +22,7 @@ export default function HelpRequestTable({
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/helpRequest/all"]
+        ["/api/helpRequests/all"]
     );
     // Stryker restore all 
 
