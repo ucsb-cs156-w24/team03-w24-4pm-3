@@ -3,7 +3,7 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { rest } from "msw";
 
-import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage"
+import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 
 export default {
     title: 'pages/HelpRequest/HelpRequestCreatePage',
