@@ -78,7 +78,7 @@ describe("HelpRequestCreatePage tests", () => {
         });
 
         const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
-        const teamIdField = screen.getByTestId("HelpRequestForm-teamID");
+        const teamIdField = screen.getByTestId("HelpRequestForm-teamId");
         const tableOrBreakoutRoomField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
         const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
         const explanationField = screen.getByTestId("HelpRequestForm-explanation");
