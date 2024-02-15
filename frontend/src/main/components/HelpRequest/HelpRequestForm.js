@@ -21,6 +21,15 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
     // Note that even this complex regex may still need some tweaks
 
     const testIdPrefix = "HelpRequestForm-";
+    const handleSolvedChange = (e) => {
+        setValue("solved", e.target.checked); // Update the value of "solved"
+    };
+
+    useEffect(() => {
+        if (!initialContents?.hasOwnProperty("solved")) {
+            setValue("solved", false);
+        }
+    }, [initialContents, setValue]);
 
     return (
 
