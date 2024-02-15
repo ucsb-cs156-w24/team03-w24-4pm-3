@@ -74,28 +74,28 @@ describe("HelpRequestCreatePage tests", () => {
         )
 
         await waitFor(() => {
-            expect(screen.getByLabelText("RequesterEmail")).toBeInTheDocument();
+            expect(screen.getByTestId("HelpRequestForm-requesterEmail")).toBeInTheDocument();
         });
 
-        const emailInput = screen.getByLabelText("RequesterEmail");
+        const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
         expect(emailInput).toBeInTheDocument();
 
-        const teamInput = screen.getByLabelText("TeamID");
+        const teamIdField = screen.getByTestId("HelpRequestForm-teamID");
         expect(teamInput).toBeInTheDocument();
 
-        const tableInput = screen.getByLabelText("TableOrBreakoutRoom");
+        const tableOrBreakoutRoomEmailField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
         expect(tableInput).toBeInTheDocument();
 
-        const timeInput = screen.getByLabelText("RequestTime");
+        const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
         expect(timeInput).toBeInTheDocument();
 
-        const explanationInput = screen.getByLabelText("Explanation");
+        const explanationField = screen.getByTestId("HelpRequestForm-explanation");
         expect(explanationInput).toBeInTheDocument();
 
         const solvedInput = screen.getByTestId("HelpRequestForm-solved");
         expect(solvedInput).toBeInTheDocument();
 
-        const createButton = screen.getByText("Create");
+        const submitButton = screen.getByTestId("HelpRequestForm-submit");
         expect(createButton).toBeInTheDocument();
 
         fireEvent.change(emailInput, { target: { value: 'one@ucsb.edu' } })
