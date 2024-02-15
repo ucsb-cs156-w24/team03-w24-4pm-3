@@ -10,7 +10,8 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
         register,
         formState: { errors },
         handleSubmit,
-        watch
+        watch,
+        setValue,
     } = useForm(
         { defaultValues: initialContents || {}, }
     );
