@@ -90,7 +90,7 @@ describe("HelpRequestCreatePage tests", () => {
         fireEvent.change(tableOrBreakoutRoomField, { target: { value: 'Table 7' } });
         fireEvent.change(requestTimeField, { target: { value: '2024-02-02T12:00:00' } });
         fireEvent.change(explanationField, { target: { value: 'Dokku problems' } });
-        fireEvent.click(solvedField, { target: { checked: true } });
+        fireEvent.click(solvedField);
 
         expect(submitButton).toBeInTheDocument();
 
