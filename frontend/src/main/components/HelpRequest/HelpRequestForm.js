@@ -67,16 +67,16 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                     </Form.Group>
 
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="teamID">TeamID</Form.Label>
+                        <Form.Label htmlFor="teamID">TeamId</Form.Label>
                         <Form.Control
                             data-testid={testIdPrefix + "teamId"}
                             id="teamId"
                             type="text"
-                            isInvalid={Boolean(errors.teamID)}
+                            isInvalid={Boolean(errors.teamId)}
                             {...register("teamId", { required: "TeamId is required." })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.teamID?.message}
+                            {errors.teamId?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
 
