@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -223,7 +223,8 @@
 <a name='L158'></a><a href='#L158'>158</a>
 <a name='L159'></a><a href='#L159'>159</a>
 <a name='L160'></a><a href='#L160'>160</a>
-<a name='L161'></a><a href='#L161'>161</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -236,29 +237,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -373,7 +374,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -395,7 +397,8 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
         register,
         formState: { errors },
         handleSubmit,
-        watch
+        watch,
+        setValue,
     } = useForm(
         { defaultValues: initialContents || {}, }
     );
@@ -407,17 +410,17 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
     // Note that even this complex regex may still need some tweaks
 &nbsp;
     const testIdPrefix = "HelpRequestForm-";
-    const handleSolvedChange = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
-<span class="cstat-no" title="statement not covered" >        setValue("solved", e.target.checked); </span>// Update "solved" value
+    const handleSolvedChange = (e) =&gt; {
+        setValue("solved", e.target.checked); // Update "solved" value
     };
 &nbsp;
-    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >        if (!initialContents?.hasOwnProperty("solved")) {</span>
-<span class="cstat-no" title="statement not covered" >            setValue("solved", false);</span>
+    useEffect(() =&gt; {
+        if (!initialContents?.hasOwnProperty("solved")) {
+            setValue("solved", false);
         }
     }, [initialContents, setValue]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
 &nbsp;
         &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
 &nbsp;
@@ -453,11 +456,11 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                     &lt;Form.Group className="mb-3" &gt;
                         &lt;Form.Label htmlFor="teamID"&gt;TeamID&lt;/Form.Label&gt;
                         &lt;Form.Control
-                            data-testid={testIdPrefix + "teamID"}
-                            id="teamID"
+                            data-testid={testIdPrefix + "teamId"}
+                            id="teamId"
                             type="text"
                             isInvalid={Boolean(errors.teamID)}
-                            {...register("teamID", { required: "TeamID is required." })}
+                            {...register("teamId", { required: "TeamId is required." })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
                             {errors.teamID?.message}
@@ -533,7 +536,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                     &lt;/Button&gt;
                     &lt;Button
                         variant="Secondary"
-                        onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(-1)}</span>
+                        onClick={() =&gt; navigate(-1)}
                         data-testid={testIdPrefix + "cancel"}
                     &gt;
                         Cancel
@@ -550,7 +553,7 @@ export default HelpRequestForm;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Feb 15 2024 14:07:27 GMT-0800 (Pacific Standard Time)
+                at Thu Feb 15 2024 14:20:10 GMT-0800 (Pacific Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
