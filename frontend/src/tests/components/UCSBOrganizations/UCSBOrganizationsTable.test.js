@@ -1,6 +1,6 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
-import { ucsbDatesFixtures } from "fixtures/ucsbDatesFixtures";
-import UCSBDatesTable from "main/components/UCSBDates/UCSBDatesTable"
+import { ucsbOrganizationsFixtures } from "fixtures/ucsbOrganizationsFixtures";
+import UCSBOrganizationsTable from "main/components/UCSBOrganizations/UCSBOrganizationsTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -23,15 +23,15 @@ describe("UserTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDatesTable dates={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
+          <UCSBOrganizationsTable organizations={ucsbOrganizationsFixtures.threeOrganizations} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
-    const expectedHeaders = ["id", "QuarterYYYYQ", "Name", "Date"];
-    const expectedFields = ["id", "quarterYYYYQ", "name", "localDateTime"];
-    const testId = "UCSBDatesTable";
+    const expectedHeaders = ["id", "orgCode", "orgTranslationShort", "orgTranslation", "Inactive"];
+    const expectedFields = ["id", "orgcode", "orgtranslationshort", "orgtranslation", "inactive"];
+    const testId = "UCSBOrganizationsTable";
 
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
@@ -54,22 +54,22 @@ describe("UserTable tests", () => {
 
   });
 
-  test("Has the expected colum headers and content for adminUser", () => {
+  test("Has the expected colum headers and content for adminUser", async () => {
 
     const currentUser = currentUserFixtures.adminUser;
 
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDatesTable dates={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
+          <UCSBOrganizationsTable organizations={ucsbOrganizationsFixtures.threeOrganizations} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
-    const expectedHeaders = ["id", "QuarterYYYYQ", "Name", "Date"];
-    const expectedFields = ["id", "quarterYYYYQ", "name", "localDateTime"];
-    const testId = "UCSBDatesTable";
+    const expectedHeaders = ["id", "orgCode", "orgTranslationShort", "orgTranslation", "Inactive"];
+    const expectedFields = ["id", "orgcode", "orgtranslationshort", "orgtranslation", "inactive"];
+    const testId = "UCSBOrganizationsTable";
 
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
@@ -91,6 +91,8 @@ describe("UserTable tests", () => {
     const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
+    fireEvent.click(deleteButton);
+
 
   });
 
@@ -101,20 +103,20 @@ describe("UserTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDatesTable dates={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
+          <UCSBOrganizationsTable organizations={ucsbOrganizationsFixtures.threeOrganizations} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
-    await waitFor(() => { expect(screen.getByTestId(`UCSBDatesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+    await waitFor(() => { expect(screen.getByTestId(`UCSBOrganizationsTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
 
-    const editButton = screen.getByTestId(`UCSBDatesTable-cell-row-0-col-Edit-button`);
+    const editButton = screen.getByTestId(`UCSBOrganizationsTable-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
     
     fireEvent.click(editButton);
 
-    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbdates/edit/1'));
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsborganizations/edit/1'));
 
   });
 
