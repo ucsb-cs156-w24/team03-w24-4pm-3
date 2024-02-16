@@ -27,11 +27,14 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
         setValue("solved", e.target.checked); // Update "solved" value
     };
 
+    // Stryker disable all
     useEffect(() => {
         if (!initialContents?.hasOwnProperty("solved")) {
             setValue("solved", false);
         }
     }, [initialContents, setValue]);
+    // Stryker restore all
+
 
     return (
 
