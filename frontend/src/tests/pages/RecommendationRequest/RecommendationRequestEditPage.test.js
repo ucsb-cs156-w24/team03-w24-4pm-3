@@ -172,7 +172,7 @@ describe("RecommendationRequestEditPage tests", () => {
             fireEvent.change(explanationField, { target: { value: "PHD Program" } })
             fireEvent.change(dateRequestedField, { target: { value: "2022-12-25T15:00" } })
             fireEvent.change(dateNeededField, { target: { value: "2022-12-31T15:00" } })
-            fireEvent.change(done, { target: { value: "true" } })
+            fireEvent.change(doneField, { target: { value: "true" } })
 
             fireEvent.click(submitButton);
 
