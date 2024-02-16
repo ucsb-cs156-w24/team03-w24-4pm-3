@@ -2,7 +2,7 @@ import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
     // Stryker disable all
     const {
@@ -16,14 +16,9 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
 
     const navigate = useNavigate();
 
-    // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
     // Note that even this complex regex may still need some tweaks
 
     // Stryker disable next-line Regex
-    const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-
-    // Stryker disable next-line all
-    const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
 
     return (
 
@@ -37,7 +32,7 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
                         <Form.Group className="mb-3" >
                             <Form.Label htmlFor="id">Id</Form.Label>
                             <Form.Control
-                                data-testid="UCSBDateForm-id"
+                                data-testid="UCSBOrganizationsForm-id"
                                 id="id"
                                 type="text"
                                 {...register("id")}
@@ -50,32 +45,46 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
 
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="quarterYYYYQ">Quarter YYYYQ</Form.Label>
+                        <Form.Label htmlFor="orgCode">Organization Code</Form.Label>
                         <Form.Control
-                            data-testid="UCSBDateForm-quarterYYYYQ"
-                            id="quarterYYYYQ"
+                            data-testid="UCSBOrganizationsForm-orgCode"
+                            id="orgCode"
                             type="text"
-                            isInvalid={Boolean(errors.quarterYYYYQ)}
-                            {...register("quarterYYYYQ", { required: true, pattern: yyyyq_regex })}
+                            isInvalid={Boolean(errors.orgCode)}
+                            {...register("orgCode", { required: true })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.quarterYYYYQ && 'QuarterYYYYQ is required. '}
-                            {errors.quarterYYYYQ?.type === 'pattern' && 'QuarterYYYYQ must be in the format YYYYQ, e.g. 20224 for Fall 2022'}
+                            {errors.orgCode && 'orgCode is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="localDateTime">Date (iso format)</Form.Label>
+                        <Form.Label htmlFor="orgTranslationShort">Organization Translation Short</Form.Label>
                         <Form.Control
-                            data-testid="UCSBDateForm-localDateTime"
-                            id="localDateTime"
-                            type="datetime-local"
-                            isInvalid={Boolean(errors.localDateTime)}
-                            {...register("localDateTime", { required: true, pattern: isodate_regex })}
+                            data-testid="UCSBOrganizationsForm-orgTranslationShort"
+                            id="orgTranslationShort"
+                            type="text"
+                            isInvalid={Boolean(errors.orgTranslationShort)}
+                            {...register("orgTranslationShort", { required: true })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.localDateTime && 'LocalDateTime is required. '}
+                            {errors.orgTranslationShort && 'orgTranslationShort is required.'}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Col>
+                <Col>
+                    <Form.Group className="mb-3" >
+                        <Form.Label htmlFor="orgTranslation">Organization Translation</Form.Label>
+                        <Form.Control
+                            data-testid="UCSBOrganizationsForm-orgTranslation"
+                            id="orgTranslation"
+                            type="text"
+                            isInvalid={Boolean(errors.orgTranslation)}
+                            {...register("orgTranslation", { required: true })}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.orgTranslation && 'orgTranslation is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -83,23 +92,19 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
 
             <Row>
 
-                <Col>
-
-
-
+            <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="name">Name</Form.Label>
+                        <Form.Label htmlFor="inactive">Organization Inactive</Form.Label>
                         <Form.Control
-                            data-testid="UCSBDateForm-name"
-                            id="name"
+                            data-testid="UCSBOrganizationsForm-inactive"
+                            id="inactive"
                             type="text"
-                            isInvalid={Boolean(errors.name)}
-                            {...register("name", {
-                                required: "Name is required."
-                            })}
+                            isInvalid={Boolean(errors.inactive)}
+                            {...register("inactive", { required: true, pattern: /(^true$|^false$)/g})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.name?.message}
+                            {errors.inactive && 'inactive is required.'}
+                            {errors.inactive?.type === 'pattern' && 'inactive must be in the format true or false'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -109,14 +114,14 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
                 <Col>
                     <Button
                         type="submit"
-                        data-testid="UCSBDateForm-submit"
+                        data-testid="UCSBOrganizationsForm-submit"
                     >
                         {buttonLabel}
                     </Button>
                     <Button
                         variant="Secondary"
                         onClick={() => navigate(-1)}
-                        data-testid="UCSBDateForm-cancel"
+                        data-testid="UCSBOrganizationsForm-cancel"
                     >
                         Cancel
                     </Button>
@@ -127,4 +132,4 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
     )
 }
 
-export default UCSBDateForm;
+export default UCSBOrganizationsForm;

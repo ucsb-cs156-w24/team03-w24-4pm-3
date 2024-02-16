@@ -1,12 +1,12 @@
 const ucsbOrganizationsFixtures = {
-    onebOrganization: {
+    oneOrganization: {
         "id": 1,
         "orgCode": "ZPR",
         "orgTranslationShort": "ZPR",
         "orgTranslation": "Zeta Phi Rho",
         "inactive": "false"
     },
-    threebOrganizations: [
+    threeOrganizations: [
         {
             "id": 1,
             "orgCode": "ZPR",
