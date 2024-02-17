@@ -2,16 +2,16 @@ import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBOrganizationsUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function UCSBDatesTable({ dates, currentUser }) {
+export default function UCSBOrganizationsTable({ organizations, currentUser }) {
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/ucsbdates/edit/${cell.row.values.id}`)
+        navigate(`/ucsborganizations/edit/${cell.row.values.id}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -19,12 +19,12 @@ export default function UCSBDatesTable({ dates, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/ucsbdates/all"]
+        ["/api/ucsborganizations/all"]
     );
     // Stryker restore all 
 
     // Stryker disable next-line all : TODO try to make a good test for this
-    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
+    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); } 
 
 
     const columns = [
@@ -33,27 +33,31 @@ export default function UCSBDatesTable({ dates, currentUser }) {
             accessor: 'id', // accessor is the "key" in the data
         },
         {
-            Header: 'QuarterYYYYQ',
-            accessor: 'quarterYYYYQ',
+            Header: 'orgCode',
+            accessor: 'orgcode',
         },
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'orgTranslationShort',
+            accessor: 'orgtranslationshort',
         },
         {
-            Header: 'Date',
-            accessor: 'localDateTime',
+            Header: 'orgTranslation',
+            accessor: 'orgtranslation',
+        },
+        {
+            Header: 'Inactive',
+            accessor: 'inactive',
         }
     ];
 
     if (hasRole(currentUser, "ROLE_ADMIN")) {
-        columns.push(ButtonColumn("Edit", "primary", editCallback, "UCSBDatesTable"));
-        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "UCSBDatesTable"));
+        columns.push(ButtonColumn("Edit", "primary", editCallback, "UCSBOrganizationsTable"));
+        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "UCSBOrganizationsTable"));
     } 
 
     return <OurTable
-        data={dates}
+        data={organizations}
         columns={columns}
-        testid={"UCSBDatesTable"}
+        testid={"UCSBOrganizationsTable"}
     />;
 };
