@@ -78,7 +78,7 @@ describe("HelpRequestEditPage tests", () => {
                 requesterEmail: "two@ucsb.edu",
                 teamId: "02",
                 tableOrBreakoutRoom: "Table 2",
-                requestTime: "2022-04-03T12:00:00",
+                requestTime: "2022-04-03T12:00",
                 explanation: "Swagger",
                 solved: false
             });
@@ -87,7 +87,7 @@ describe("HelpRequestEditPage tests", () => {
                 requesterEmail: "twentytwo@ucsb.edu",
                 teamId: "07",
                 tableOrBreakoutRoom: "Big Table",
-                requestTime: "2024-04-03T12:00:00",
+                requestTime: "2024-04-03T12:00",
                 explanation: "Big Swagger",
                 solved: true
             });
@@ -144,7 +144,7 @@ describe("HelpRequestEditPage tests", () => {
             fireEvent.change(requesterEmailField, { target: { value: "two@ucsb.edu" } });
             fireEvent.change(teamIdField, { target: { value: '07' } });
             fireEvent.change(tableOrBreakoutRoomEmailField, { target: { value: 'Table 2' } });
-            fireEvent.change(requestTimeField, { target: { value: "2022-04-03T12:00:00" } });
+            fireEvent.change(requestTimeField, { target: { value: "2022-04-03T12:00" } });
             fireEvent.change(explanationField, { target: { value: "Swagger" } });
             fireEvent.click(solvedButton);
             fireEvent.click(submitButton);
@@ -160,7 +160,7 @@ describe("HelpRequestEditPage tests", () => {
                 requesterEmail: "two@ucsb.edu",
                 teamId: "07",
                 tableOrBreakoutRoom: "Table 2",
-                requestTime: "2022-04-03T12:00:00",
+                requestTime: "2022-04-03T12:00",
                 explanation: "Swagger",
                 solved: true
             }));
@@ -202,7 +202,7 @@ describe("HelpRequestEditPage tests", () => {
             fireEvent.change(requesterEmailField, { target: { value: 'twentytwo@ucsb.edu' } })
             fireEvent.change(teamIdField, { target: { value: '07' } })
             fireEvent.change(tableOrBreakoutRoomEmailField, { target: { value: 'Big Table' } })
-            fireEvent.change(requestTimeField, { target: { value: "2024-04-03T12:00:00" } })
+            fireEvent.change(requestTimeField, { target: { value: "2024-04-03T12:00" } })
             fireEvent.change(explanationField, { target: { value: "Big Swagger" } })
             fireEvent.click(solvedButton);
             fireEvent.click(submitButton);
