@@ -29,7 +29,7 @@ describe("UserTable tests", () => {
 
     );
 
-    const expectedHeaders = ["id", "orgCode", "orgTranslationShort", "orgTranslation", "Inactive"];
+    const expectedHeaders = ["id", "Organization Code", "Translation Short", "Translation", "Inactive"];
     const expectedFields = ["id", "orgcode", "orgtranslationshort", "orgtranslation", "inactive"];
     const testId = "UCSBOrganizationsTable";
 
@@ -67,7 +67,7 @@ describe("UserTable tests", () => {
 
     );
 
-    const expectedHeaders = ["id", "orgCode", "orgTranslationShort", "orgTranslation", "Inactive"];
+    const expectedHeaders = ["id", "Organization Code", "Translation Short", "Translation", "Inactive"];
     const expectedFields = ["id", "orgcode", "orgtranslationshort", "orgtranslation", "inactive"];
     const testId = "UCSBOrganizationsTable";
 

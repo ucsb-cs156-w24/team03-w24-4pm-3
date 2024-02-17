@@ -33,15 +33,15 @@ export default function UCSBOrganizationsTable({ organizations, currentUser }) {
             accessor: 'id', // accessor is the "key" in the data
         },
         {
-            Header: 'orgCode',
+            Header: 'Organization Code',
             accessor: 'orgcode',
         },
         {
-            Header: 'orgTranslationShort',
+            Header: 'Translation Short',
             accessor: 'orgtranslationshort',
         },
         {
-            Header: 'orgTranslation',
+            Header: 'Translation',
             accessor: 'orgtranslation',
         },
         {
