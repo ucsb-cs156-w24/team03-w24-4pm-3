@@ -121,7 +121,7 @@ describe("HelpRequestEditPage tests", () => {
             const tableOrBreakoutRoomEmailField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
             const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
             const explanationField = screen.getByTestId("HelpRequestForm-explanation");
-            const solveButton = screen.getByTestId("HelpRequestForm-solved");
+            const solvedButton = screen.getByTestId("HelpRequestForm-solved");
             const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
             expect(idField).toBeInTheDocument();
@@ -133,11 +133,11 @@ describe("HelpRequestEditPage tests", () => {
             expect(tableOrBreakoutRoomEmailField).toBeInTheDocument();
             expect(tableOrBreakoutRoomEmailField).toHaveValue("Table 2");
             expect(requestTimeField).toBeInTheDocument();
-            expect(requestTimeField).toHaveValue("2022-04-03T12:00:00");
+            expect(requestTimeField).toHaveValue("2022-04-03T12:00");
             expect(explanationField).toBeInTheDocument();
             expect(explanationField).toHaveValue("Swagger");
-            expect(solveButton).toBeInTheDocument();
-            expect(solveButton).not.toBeChecked();
+            expect(solvedButton).toBeInTheDocument();
+            expect(solvedButton).not.toBeChecked();
 
             expect(submitButton).toHaveTextContent("Update");
 
@@ -146,7 +146,7 @@ describe("HelpRequestEditPage tests", () => {
             fireEvent.change(tableOrBreakoutRoomEmailField, { target: { value: 'Table 2' } });
             fireEvent.change(requestTimeField, { target: { value: "2022-04-03T12:00:00" } });
             fireEvent.change(explanationField, { target: { value: "Swagger" } });
-            fireEvent.click(solveButton);
+            fireEvent.click(solvedButton);
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
@@ -186,16 +186,16 @@ describe("HelpRequestEditPage tests", () => {
             const tableOrBreakoutRoomEmailField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
             const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
             const explanationField = screen.getByTestId("HelpRequestForm-explanation");
-            const solveButton = screen.getByTestId("HelpRequestForm-solved");
+            const solvedButton = screen.getByTestId("HelpRequestForm-solved");
             const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
             expect(idField).toHaveValue("3");
             expect(requesterEmailField).toHaveValue("two@ucsb.edu");
             expect(teamIdField).toHaveValue("02");
             expect(tableOrBreakoutRoomEmailField).toHaveValue("Table 2");
-            expect(requestTimeField).toHaveValue("2022-04-03T12:00:00");
+            expect(requestTimeField).toHaveValue("2022-04-03T12:00");
             expect(explanationField).toHaveValue("Swagger");
-            expect(solveButton).not.toBeChecked();
+            expect(solvedButton).not.toBeChecked();
 
             expect(submitButton).toBeInTheDocument();
 
@@ -204,7 +204,7 @@ describe("HelpRequestEditPage tests", () => {
             fireEvent.change(tableOrBreakoutRoomEmailField, { target: { value: 'Big Table' } })
             fireEvent.change(requestTimeField, { target: { value: "2024-04-03T12:00:00" } })
             fireEvent.change(explanationField, { target: { value: "Big Swagger" } })
-            fireEvent.click(solveButton);
+            fireEvent.click(solvedButton);
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
