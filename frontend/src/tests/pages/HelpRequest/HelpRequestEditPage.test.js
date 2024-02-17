@@ -191,7 +191,7 @@ describe("HelpRequestEditPage tests", () => {
 
             expect(idField).toHaveValue("3");
             expect(requesterEmailField).toHaveValue("two@ucsb.edu");
-            expect(teamIdField).toHaveValue("Team 02");
+            expect(teamIdField).toHaveValue("02");
             expect(tableOrBreakoutRoomEmailField).toHaveValue("Table 2");
             expect(requestTimeField).toHaveValue("2022-04-03T12:00:00");
             expect(explanationField).toHaveValue("Swagger");
