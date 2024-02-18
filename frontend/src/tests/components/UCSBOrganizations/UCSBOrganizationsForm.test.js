@@ -52,7 +52,12 @@ describe("UCSBOrganizationsForm tests", () => {
         const orgInactiveField = screen.getByTestId("UCSBOrganizationsForm-inactive");
         const submitButton = screen.getByTestId("UCSBOrganizationsForm-submit");
 
-        fireEvent.change(orgInactiveField, { target: { value: 'bad-input' } });
+        fireEvent.change(orgCodeField, { target: { value: 'DSP' } });
+        fireEvent.change(orgTranslationShortField, { target: { value: 'DSP' } });
+        fireEvent.change(orgTranslationField, { target: { value: 'Delta Sigma Pi' } });
+        fireEvent.change(orgInactiveField, { target: { value: 'FLSE' } });
+        fireEvent.click(submitButton);
+
         fireEvent.click(submitButton);
 
         await screen.findByText(/inactive must be in the format true or false/);
@@ -99,7 +104,7 @@ describe("UCSBOrganizationsForm tests", () => {
         fireEvent.change(orgCodeField, { target: { value: 'DSP' } });
         fireEvent.change(orgTranslationShortField, { target: { value: 'DSP' } });
         fireEvent.change(orgTranslationField, { target: { value: 'Delta Sigma Pi' } });
-        fireEvent.change(orgInactiveField, { target: { value: 'false' } });
+        fireEvent.change(orgInactiveField, { target: { value: 'true' } });
         fireEvent.click(submitButton);
 
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
