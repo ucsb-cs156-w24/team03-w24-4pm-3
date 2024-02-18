@@ -59,9 +59,9 @@ describe("UCSBOrganizationsIndexPage tests", () => {
 
         // assert
         await waitFor( ()=>{
-            expect(screen.getByText(/Create UCSBOrganizations/)).toBeInTheDocument();
+            expect(screen.getByText(/Create Organizations/)).toBeInTheDocument();
         });
-        const button = screen.getByText(/Create UCSBOrganizations/);
+        const button = screen.getByText(/Create Organizations/);
         expect(button).toHaveAttribute("href", "/ucsborganizations/create");
         expect(button).toHaveAttribute("style", "float: right;");
     });
@@ -88,7 +88,7 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
         // assert that the Create button is not present when user isn't an admin
-        expect(screen.queryByText(/Create UCSBOrganizations/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Create Organization/)).not.toBeInTheDocument();
 
     });
 
