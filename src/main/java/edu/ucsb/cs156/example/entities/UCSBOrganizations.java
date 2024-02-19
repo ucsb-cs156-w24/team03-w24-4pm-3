@@ -15,7 +15,7 @@ import lombok.Builder;
 @Entity(name = "ucsborganizations")
 public class UCSBOrganizations {
   @Id
-  private String id;
+  private long id;
   private String orgCode;
   private String orgTranslationShort;
   private String orgTranslation; 
