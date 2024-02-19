@@ -27,7 +27,7 @@ jest.mock('react-router-dom', () => {
         __esModule: true,
         ...originalModule,
         useParams: () => ({
-            id: 17
+            orgCode: 'ZPR'
         }),
         Navigate: (x) => { mockNavigate(x); return null; }
     };
@@ -74,7 +74,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/ucsborganizations", { params: { id: 17 } }).reply(200, {
+            axiosMock.onGet("/api/ucsborganizations", { params: { orgCode: 'ZPR' } }).reply(200, {
                 id: 17,
                 orgCode: 'ZPR',
                 orgTranslationShort: "ZPR",
@@ -157,7 +157,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
             expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganizations" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
-            expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
+            expect(axiosMock.history.put[0].params).toEqual({ orgCode: "DSP" });
             expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
                 orgCode: "DSP",
                 orgTranslationShort: "DSP",
