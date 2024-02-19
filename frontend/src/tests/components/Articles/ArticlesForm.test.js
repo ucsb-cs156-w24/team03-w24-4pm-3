@@ -53,13 +53,11 @@ describe("ArticlesForm tests", () => {
 
         fireEvent.click(screen.getByTestId("ArticlesForm-submit"));
 
-        await waitFor(() => {
-            expect(screen.getByText(/Title is required/)).toBeInTheDocument();
-            expect(screen.getByText(/URL is required/)).toBeInTheDocument();
-            expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
-            expect(screen.getByText(/email is required./)).toBeInTheDocument();
-            expect(screen.getByText(/Date added is required./)).toBeInTheDocument();
-        });
+        await screen.findByText(/Title is required./);
+        expect(screen.getByText(/URL is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
+        expect(screen.getByText(/email is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Date added is required./)).toBeInTheDocument();
     });
     /*
     test("Correct Error messages on bad input", async () => {
