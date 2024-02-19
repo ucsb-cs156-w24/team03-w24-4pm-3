@@ -100,11 +100,13 @@ function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "C
                             id="inactive"
                             type="text"
                             isInvalid={Boolean(errors.inactive)}
-                            {...register("inactive", { required: true, pattern: /true|false|TRUE|FALSE|True|False/})}
+                            {...register("inactive", {
+                                required: "inactive is required.",
+                                validate: value => value === 'true' || value === 'false' || "inactive must be in the format true or false" 
+                            })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.inactive && 'inactive is required.'}
-                            {errors.inactive?.type === 'pattern' && 'inactive must be in the format true or false'}
+                            {errors.inactive?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
