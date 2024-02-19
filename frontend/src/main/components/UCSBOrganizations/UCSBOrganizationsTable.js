@@ -11,7 +11,7 @@ export default function UCSBOrganizationsTable({ organizations, currentUser }) {
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/ucsborganizations/edit/${cell.row.values.orgcode}`)
+        navigate(`/ucsborganizations/edit/${cell.row.values.orgCode}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -29,20 +29,20 @@ export default function UCSBOrganizationsTable({ organizations, currentUser }) {
 
     const columns = [
         {
-            Header: 'Organization Code',
-            accessor: 'orgcode',
+            Header: 'OrgCode',
+            accessor: 'orgCode',
         },
         {
-            Header: 'Translation Short',
-            accessor: 'orgtranslationshort',
+            Header: 'OrgTranslationShort',
+            accessor: 'orgTranslationShort',
         },
         {
-            Header: 'Translation',
-            accessor: 'orgtranslation',
+            Header: 'OrgTranslation',
+            accessor: 'orgTranslation',
         },
         {
             Header: 'Inactive',
-            accessor: 'inactive',
+            accessor: 'inactive'
         }
     ];
 

@@ -29,8 +29,8 @@ describe("UserTable tests", () => {
 
     );
 
-    const expectedHeaders = ["Organization Code", "Translation Short", "Translation", "Inactive"];
-    const expectedFields = ["orgcode", "orgtranslationshort", "orgtranslation", "inactive"];
+    const expectedHeaders = ["OrgCode", "OrgTranslationShort", "OrgTranslation", "Inactive"];
+    const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
     const testId = "UCSBOrganizationsTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -43,8 +43,8 @@ describe("UserTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent("ZPR");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent("DSP");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("ZPR");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("DSP");
 
     const editButton = screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).not.toBeInTheDocument();
@@ -67,8 +67,8 @@ describe("UserTable tests", () => {
 
     );
 
-    const expectedHeaders = ["Organization Code", "Translation Short", "Translation", "Inactive"];
-    const expectedFields = ["orgcode", "orgtranslationshort", "orgtranslation", "inactive"];
+    const expectedHeaders = ["OrgCode", "OrgTranslationShort", "OrgTranslation", "Inactive"];
+    const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
     const testId = "UCSBOrganizationsTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -81,8 +81,8 @@ describe("UserTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent("ZPR");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent("DSP");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("ZPR");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("DSP");
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
@@ -109,7 +109,7 @@ describe("UserTable tests", () => {
 
     );
 
-    await waitFor(() => { expect(screen.getByTestId(`UCSBOrganizationsTable-cell-row-0-col-orgcode`)).toHaveTextContent("ZPR"); });
+    await waitFor(() => { expect(screen.getByTestId(`UCSBOrganizationsTable-cell-row-0-col-orgCode`)).toHaveTextContent("ZPR"); });
 
     const editButton = screen.getByTestId(`UCSBOrganizationsTable-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();

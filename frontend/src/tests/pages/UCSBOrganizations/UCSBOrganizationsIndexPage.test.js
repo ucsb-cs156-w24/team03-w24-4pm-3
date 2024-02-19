@@ -83,9 +83,9 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         );
 
         // assert
-        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent("ZPR"); });
-        expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent("DSP");
-        expect(screen.getByTestId(`${testId}-cell-row-2-col-orgcode`)).toHaveTextContent("ZBT");
+        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("ZPR"); });
+        expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("DSP");
+        expect(screen.getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent("ZBT");
 
         // assert that the Create button is not present when user isn't an admin
         expect(screen.queryByText(/Create Organization/)).not.toBeInTheDocument();
@@ -116,7 +116,7 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         expect(errorMessage).toMatch("Error communicating with backend via GET on /api/ucsborganizations/all");
         restoreConsole();
 
-        expect(screen.queryByTestId(`${testId}-cell-row-0-col-orgcode`)).not.toBeInTheDocument();
+        expect(screen.queryByTestId(`${testId}-cell-row-0-col-orgCode`)).not.toBeInTheDocument();
     });
 
     test("what happens when you click delete, admin", async () => {
@@ -136,9 +136,9 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         );
 
         // assert
-        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toBeInTheDocument(); });
+        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toBeInTheDocument(); });
 
-        expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent("ZPR");
+        expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("ZPR");
 
         const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
         expect(deleteButton).toBeInTheDocument();

@@ -1,27 +1,27 @@
 const ucsbOrganizationsFixtures = {
     oneOrganization: {
-        "orgcode": "ZPR",
-        "orgtranslationshort": "ZPR",
-        "orgtranslation": "Zeta Phi Rho",
+        "orgCode": "ZPR",
+        "orgTranslationShort": "ZPR",
+        "orgTranslation": "Zeta Phi Rho",
         "inactive": "false"
     },
     threeOrganizations: [
         {
-            "orgcode": "ZPR",
-            "orgtranslationshort": "ZPR",
-            "orgtranslation": "Zeta Phi Rho",
+            "orgCode": "ZPR",
+            "orgTranslationShort": "ZPR",
+            "orgTranslation": "Zeta Phi Rho",
             "inactive": "false"
         },
         {
-            "orgcode": "DSP",
-            "orgtranslationshort": "DSP",
-            "orgtranslation": "Delta Sigma Pi",
+            "orgCode": "DSP",
+            "orgTranslationShort": "DSP",
+            "orgTranslation": "Delta Sigma Pi",
             "inactive": "false"
         },
         {
-            "orgcode": "ZBT",
-            "orgtranslationshort": "ZBT",
-            "orgtranslation": "Zeta Beta Tau",
+            "orgCode": "ZBT",
+            "orgTranslationShort": "ZBT",
+            "orgTranslation": "Zeta Beta Tau",
             "inactive": "false"
         }
     ]
