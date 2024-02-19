@@ -25,7 +25,7 @@ import UCSBOrganizationsEditPage from "main/pages/UCSBOrganizations/UCSBOrganiza
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.css"; 
 
 function App() {
   const { data: currentUser } = useCurrentUser();
