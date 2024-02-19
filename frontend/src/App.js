@@ -15,9 +15,9 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
-import UCSBOrganizationsIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationsIndexPage";
-import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationsCreatePage";
-import UCSBOrganizationsEditPage from "main/pages/UCSBOrganization/UCSBOrganizationsEditPage";
+import UCSBOrganizationsIndexPage from "main/pages/UCSBOrganizations/UCSBOrganizationsIndexPage";
+import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganizations/UCSBOrganizationsCreatePage";
+import UCSBOrganizationsEditPage from "main/pages/UCSBOrganizations/UCSBOrganizationsEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
