@@ -15,14 +15,13 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
-
-import UCSBOrganizationsIndexPage from "main/pages/UCSBOrganizations/UCSBOrganizationsIndexPage";
-import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganizations/UCSBOrganizationsCreatePage";
-import UCSBOrganizationsEditPage from "main/pages/UCSBOrganizations/UCSBOrganizationsEditPage";
+import UCSBOrganizationsIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationsIndexPage";
+import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationsCreatePage";
+import UCSBOrganizationsEditPage from "main/pages/UCSBOrganization/UCSBOrganizationsEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
-import "bootstrap/dist/css/bootstrap.css"; 
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   const { data: currentUser } = useCurrentUser();
@@ -90,8 +89,8 @@ function App() {
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-              <Route exact path="/ucsborganizations/edit/:orgCode" element={<UCSBOrganizationsEditPage />} />
               <Route exact path="/ucsborganizations/create" element={<UCSBOrganizationsCreatePage />} />
+              <Route exact path="/ucsborganizations/edit/:orgCode" element={<UCSBOrganizationsEditPage />} />
             </>
           )
         }
