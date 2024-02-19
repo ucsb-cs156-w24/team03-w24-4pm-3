@@ -44,7 +44,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/ucsborganizations", { params: { id: 17 } }).timeout();
+            axiosMock.onGet("/api/ucsborganizations", { params: { orgcode: "ZBT" } }).timeout();
         });
 
         const queryClient = new QueryClient();
@@ -75,14 +75,12 @@ describe("UCSBOrganizationsEditPage tests", () => {
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
             axiosMock.onGet("/api/ucsborganizations", { params: { orgCode: 'ZPR' } }).reply(200, {
-                id: 17,
                 orgCode: 'ZPR',
                 orgTranslationShort: "ZPR",
                 orgTranslation: "Zeta Phi Rho",
                 inactive: "true"
             });
             axiosMock.onPut('/api/ucsborganizations').reply(200, {
-                id: "17",
                 orgCode: "DSP",
                 orgTranslationShort: "DSP",
                 orgTranslation: "Delta Sigma Pi",
@@ -153,7 +151,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("UCSBOrganizations Updated - id: 17 orgCode: DSP");
+            expect(mockToast).toBeCalledWith("UCSBOrganizations Updated orgCode: DSP");
             expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganizations" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called

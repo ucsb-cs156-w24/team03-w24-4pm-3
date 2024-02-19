@@ -37,7 +37,7 @@ export default function UCSBOrganizationsEditPage({storybook=false}) {
   });
 
   const onSuccess = (ucsbOrganizations) => {
-    toast(`UCSBOrganizations Updated - id: ${ucsbOrganizations.id} orgCode: ${ucsbOrganizations.orgCode}`);
+    toast(`UCSBOrganizations Updated orgCode: ${ucsbOrganizations.orgCode}`);
   }
 
   const mutation = useBackendMutation(

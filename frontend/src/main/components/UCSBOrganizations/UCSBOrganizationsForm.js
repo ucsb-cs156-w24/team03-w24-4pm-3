@@ -26,23 +26,6 @@ function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "C
 
 
             <Row>
-
-                {initialContents && (
-                    <Col>
-                        <Form.Group className="mb-3" >
-                            <Form.Label htmlFor="id">Id</Form.Label>
-                            <Form.Control
-                                data-testid="UCSBOrganizationsForm-id"
-                                id="id"
-                                type="text"
-                                {...register("id")}
-                                value={initialContents.id}
-                                disabled
-                            />
-                        </Form.Group>
-                    </Col>
-                )}
-
                 <Col>
                     <Form.Group className="mb-3" >
                         <Form.Label htmlFor="orgCode">Organization Code</Form.Label>

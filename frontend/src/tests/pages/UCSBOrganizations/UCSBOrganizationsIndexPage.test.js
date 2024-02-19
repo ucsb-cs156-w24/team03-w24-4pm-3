@@ -83,9 +83,9 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         );
 
         // assert
-        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); });
-        expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
-        expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
+        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent("ZPR"); });
+        expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent("DSP");
+        expect(screen.getByTestId(`${testId}-cell-row-2-col-orgcode`)).toHaveTextContent("ZBT");
 
         // assert that the Create button is not present when user isn't an admin
         expect(screen.queryByText(/Create Organization/)).not.toBeInTheDocument();
@@ -116,7 +116,7 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         expect(errorMessage).toMatch("Error communicating with backend via GET on /api/ucsborganizations/all");
         restoreConsole();
 
-        expect(screen.queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
+        expect(screen.queryByTestId(`${testId}-cell-row-0-col-orgcode`)).not.toBeInTheDocument();
     });
 
     test("what happens when you click delete, admin", async () => {
@@ -124,7 +124,7 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/ucsborganizations/all").reply(200, ucsbOrganizationsFixtures.threeOrganizations);
-        axiosMock.onDelete("/api/ucsborganizations").reply(200, "UCSBOrganization with id 1 was deleted");
+        axiosMock.onDelete("/api/ucsborganizations").reply(200, "UCSBOrganization with orgCode ZPR was deleted");
 
         // act
         render(
@@ -136,9 +136,9 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         );
 
         // assert
-        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
+        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toBeInTheDocument(); });
 
-        expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+        expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent("ZPR");
 
         const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
         expect(deleteButton).toBeInTheDocument();
@@ -147,7 +147,7 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         fireEvent.click(deleteButton);
 
         // assert
-        await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBOrganization with id 1 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBOrganization with orgCode ZPR was deleted") });
 
     });
 

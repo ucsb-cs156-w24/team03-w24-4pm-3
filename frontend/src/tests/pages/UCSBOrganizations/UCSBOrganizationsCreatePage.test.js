@@ -54,7 +54,6 @@ describe("UCSBOrganizationsCreatePage tests", () => {
 
         const queryClient = new QueryClient();
         const ucsbOrganizations = {
-            id: "16",
             orgCode: "ZPR",
             orgTranslationShort: "Zeta Phi Rho",
             orgTranslation: "Zeta Phi Rho (ZPR)",
@@ -100,7 +99,7 @@ describe("UCSBOrganizationsCreatePage tests", () => {
             "inactive": "true"
         });
 
-        expect(mockToast).toBeCalledWith("New ucsbOrganizations Created - id: 16 orgCode: ZPR");
+        expect(mockToast).toBeCalledWith("New ucsbOrganizations Created orgCode: ZPR");
         expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganizations" });
     });
 
