@@ -104,7 +104,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="dateAdded">Date Added</Form.Label>
+                <Form.Label htmlFor="dateAdded">Date Added (iso format)</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-dateAdded"}
                     id="dateAdded"
