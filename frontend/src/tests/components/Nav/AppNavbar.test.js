@@ -127,6 +127,26 @@ describe("AppNavbar tests", () => {
         expect(screen.queryByTestId(/AppNavbarLocalhost/i)).toBeNull();
     });
 
+    test("renders the ucsbmenuitemreviews link correctly", async () => {
+
+        const currentUser = currentUserFixtures.userOnly;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await screen.findByText("MenuItemReview");
+        const link = screen.getByText("MenuItemReview");
+        expect(link).toBeInTheDocument();
+        expect(link.getAttribute("href")).toBe("/menuitemreview");
+    });
 
     test("renders the ucsbdates link correctly", async () => {
 
@@ -168,6 +188,22 @@ describe("AppNavbar tests", () => {
         const link = screen.getByText("Restaurants");
         expect(link).toBeInTheDocument();
         expect(link.getAttribute("href")).toBe("/restaurants");
+    });
+
+    test("UCSBMenuItemReviews link does NOT show when not logged in", async () => {
+        const currentUser = null;
+        const systemInfo = systemInfoFixtures.showingBoth;
+        const doLogin = jest.fn();
+
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        expect(screen.queryByText("MenuItemReview")).not.toBeInTheDocument();
     });
 
     test("Restaurant and UCSBDates links do NOT show when not logged in", async () => {

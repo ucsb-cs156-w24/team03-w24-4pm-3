@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
-    // Stryker disable all
+    // Stryker disable all  
     const {
         register,
         formState: { errors },
