@@ -83,6 +83,10 @@ describe("ArticlesCreatePage tests", () => {
         fireEvent.change(emailInput, { target: { value: articleData.email } });
         fireEvent.change(dateAddedInput, { target: { value: articleData.dateAdded } });
 
+        expect(submitButton).toBeInTheDocument();
+
+        fireEvent.click(submitButton);
+        
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
 
