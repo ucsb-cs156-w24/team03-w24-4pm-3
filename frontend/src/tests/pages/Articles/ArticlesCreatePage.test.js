@@ -51,8 +51,10 @@ describe("ArticlesCreatePage tests", () => {
     });
 
     test("when you fill in the form and hit submit, it makes a request to the backend including date", async () => {
+        
         const queryClient = new QueryClient();
         const articleData = {
+            id: 1,
             title: "Test Article",
             url: "http://testarticle.com",
             explanation: "This is a test",
@@ -60,7 +62,7 @@ describe("ArticlesCreatePage tests", () => {
             dateAdded: "2024-02-14T00:00"
         };
 
-        axiosMock.onPost("/api/articles/post").reply(202, { ...articleData, id: 1 });
+        axiosMock.onPost("/api/articles/post").reply(202, articleData);
 
         render(
             <QueryClientProvider client={queryClient}>
