@@ -1,8 +1,6 @@
 package edu.ucsb.cs156.example.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -14,12 +12,11 @@ import lombok.Builder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "restaurant")
-public class Restaurant {
+@Entity(name = "ucsborganizations")
+public class UCSBOrganizations {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
-
-  private String name;
-  private String description;
+  private String orgCode;
+  private String orgTranslationShort;
+  private String orgTranslation; 
+  private boolean inactive;
 }
