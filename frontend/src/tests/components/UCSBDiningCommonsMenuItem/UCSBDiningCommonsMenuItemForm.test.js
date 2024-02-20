@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm";
-import { ucsbDiningCommonsMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
+import { menuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -41,7 +41,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
-                    <UCSBDiningCommonsMenuItemForm initialContents={ucsbDiningCommonsMenuItemFixtures.oneMenuItem} />
+                    <UCSBDiningCommonsMenuItemForm initialContents={menuItemFixtures.oneMenuItem} />
                 </Router>
             </QueryClientProvider>
         );
