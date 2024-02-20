@@ -95,7 +95,7 @@ function UCSBMenuItemReviewForm({ initialContents, submitAction, buttonLabel = "
                             {...register("stars", { required: true, min: 1, max: 5})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.stars && 'Stars are required. '}
+                            {errors.stars?.type === 'required' && 'Stars are required. '}
                             {errors.stars?.type === 'min' && "Minimum rating of 1 star"}
                             {errors.stars?.type === 'max' && "Maximum rating of 5 stars"}
                         </Form.Control.Feedback>

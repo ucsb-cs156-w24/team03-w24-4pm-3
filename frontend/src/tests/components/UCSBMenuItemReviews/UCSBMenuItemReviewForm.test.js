@@ -61,10 +61,12 @@ describe("UCSBMenuItemReviewForm tests", () => {
         fireEvent.change(starsField, { target: { value: 0 } });
         fireEvent.click(submitButton);
         await screen.findByText(/Minimum rating of 1 star/);
+        expect(screen.queryByText(/Stars are required./)).not.toBeInTheDocument();
 
         fireEvent.change(starsField, { target: { value: 10 } });
         fireEvent.click(submitButton);
         await screen.findByText(/Maximum rating of 5 stars/);
+        expect(screen.queryByText(/Stars are required./)).not.toBeInTheDocument();
 
     });
 
