@@ -15,10 +15,6 @@ import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/Rec
 import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
 
-import UCSBMenuItemReviewsIndexPage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsIndexPage";
-import UCSBMenuItemReviewsCreatePage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsCreatePage";
-import UCSBMenuItemReviewsEditPage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsEditPage";
-
 import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
@@ -85,9 +81,9 @@ function App() {
           )
         }
         {
+          hasRole(currentUser, "ROLE_USER") && (
             <>
-              <Route exact path="/menuitemreview/edit/:id" element={<UCSBMenuItemReviewsEditPage />} />
-              <Route exact path="/menuitemreview/create" element={<UCSBMenuItemReviewsCreatePage />} />
+              <Route exact path="/placeholder" element={<PlaceholderIndexPage />} />
             </>
           )
         }
