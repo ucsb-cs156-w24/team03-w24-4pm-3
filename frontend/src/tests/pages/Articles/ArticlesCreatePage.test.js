@@ -70,7 +70,7 @@ describe("ArticlesCreatePage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(screen.getByTestId("ArticlesForm-title")).toBeInTheDocument());
+        expect(await screen.findByTestId("ArticlesForm-title")).toBeInTheDocument();
 
         fireEvent.change(screen.getByTestId("ArticlesForm-title"), { target: { value: articleData.title } });
         fireEvent.change(screen.getByTestId("ArticlesForm-url"), { target: { value: articleData.url } });
