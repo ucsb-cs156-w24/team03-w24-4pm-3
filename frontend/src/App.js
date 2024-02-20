@@ -74,9 +74,6 @@ function App() {
           <>
             <Route exact path="/recommendationrequest" element={<RecommendationRequestIndexPage />} />
           </>
-            <>
-              <Route exact path="/menuitemreview" element={<UCSBMenuItemReviewsIndexPage />} />
-            </>
           )
         }
         {
@@ -91,13 +88,6 @@ function App() {
             <>
               <Route exact path="/menuitemreview/edit/:id" element={<UCSBMenuItemReviewsEditPage />} />
               <Route exact path="/menuitemreview/create" element={<UCSBMenuItemReviewsCreatePage />} />
-            </>
-          )
-        }
-         {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/placeholder" element={<PlaceholderIndexPage />} />
             </>
           )
         }
