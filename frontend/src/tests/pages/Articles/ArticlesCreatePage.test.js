@@ -70,25 +70,30 @@ describe("ArticlesCreatePage tests", () => {
             </QueryClientProvider>
         );
 
-        expect(await screen.findByTestId("ArticlesForm-title")).toBeInTheDocument();
+        const titleInput = await screen.findByTestId("ArticlesForm-title");
+        const urlInput = await screen.findByTestId("ArticlesForm-url");
+        const explanationInput = await screen.findByTestId("ArticlesForm-explanation");
+        const emailInput = await screen.findByTestId("ArticlesForm-email");
+        const dateAddedInput = await screen.findByTestId("ArticlesForm-dateAdded");
+        const submitButton = await screen.findByTestId("ArticlesForm-submit");
 
-        fireEvent.change(screen.getByTestId("ArticlesForm-title"), { target: { value: articleData.title } });
-        fireEvent.change(screen.getByTestId("ArticlesForm-url"), { target: { value: articleData.url } });
-        fireEvent.change(screen.getByTestId("ArticlesForm-explanation"), { target: { value: articleData.explanation } });
-        fireEvent.change(screen.getByTestId("ArticlesForm-email"), { target: { value: articleData.email } });
-        fireEvent.change(screen.getByTestId("ArticlesForm-dateAdded"), { target: { value: articleData.dateAdded } });
+        fireEvent.change(titleInput, { target: { value: articleData.title } });
+        fireEvent.change(urlInput, { target: { value: articleData.url } });
+        fireEvent.change(explanationInput, { target: { value: articleData.explanation } });
+        fireEvent.change(emailInput, { target: { value: articleData.email } });
+        fireEvent.change(dateAddedInput, { target: { value: articleData.dateAdded } });
 
-        fireEvent.click(screen.getByTestId("ArticlesForm-submit"));
+        fireEvent.click(submitButton);
 
-        await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
-
-        expect(axiosMock.history.post[0].params).toEqual(
-            {
-                title: "Test Article",
-                url: "http://testarticle.com",
-                explanation: "This is a test",
-                email: "test@article.com",
-                dateAdded: "2024-02-14T00:00"
+        await waitFor(() => {
+            expect(axiosMock.history.post[0].params).toEqual(
+                {
+                    title: "Test Article",
+                    url: "http://testarticle.com",
+                    explanation: "This is a test",
+                    email: "test@article.com",
+                    dateAdded: "2024-02-14T00:00"
+            });
         });
 
         expect(mockToast).toHaveBeenCalledWith(expect.stringContaining("Test Article"));
