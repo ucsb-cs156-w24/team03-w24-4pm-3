@@ -22,7 +22,7 @@ describe("ArticlesTable tests", () => {
 
   test("renders empty table correctly", () => {
     
-    // arrange
+    // arrange 
     const currentUser = currentUserFixtures.adminUser;
 
     // act
