@@ -83,18 +83,18 @@ describe("ArticlesCreatePage tests", () => {
         fireEvent.change(emailInput, { target: { value: articleData.email } });
         fireEvent.change(dateAddedInput, { target: { value: articleData.dateAdded } });
 
-        fireEvent.click(submitButton);
+        await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
-        await waitFor(() => {
-            expect(axiosMock.history.post[0].params).toEqual(
-                {
-                    title: "Test Article",
-                    url: "http://testarticle.com",
-                    explanation: "This is a test",
-                    email: "test@article.com",
-                    dateAdded: "2024-02-14T00:00"
-            });
+
+        expect(axiosMock.history.post[0].params).toEqual(
+            {
+                title: "Test Article",
+                url: "http://testarticle.com",
+                explanation: "This is a test",
+                email: "test@article.com",
+                dateAdded: "2024-02-14T00:00"
         });
+        
 
         expect(mockToast).toHaveBeenCalledWith(expect.stringContaining("Test Article"));
 
