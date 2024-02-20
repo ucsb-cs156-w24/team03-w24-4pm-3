@@ -1,5 +1,5 @@
-const restaurantFixtures = {
-    oneRestaurant:
+const menuItemFixtures = {
+    oneMenuItem:
     [
       {
         "id": 1,
@@ -9,7 +9,7 @@ const restaurantFixtures = {
       }
     ],
 
-    threeRestaurants:
+    threeMenuItems:
     [
         {
             "id": 2,
@@ -35,4 +35,4 @@ const restaurantFixtures = {
     ]
 };
 
-export { restaurantFixtures };
+export { menuItemFixtures };
