@@ -44,17 +44,6 @@ import java.time.LocalDateTime;
 <span class="fc" id="L44">        return dates;</span>
     }
 
-    @Operation(summary= &quot;Get a single date&quot;)
-    @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
-    @GetMapping(&quot;&quot;)
-    public UCSBDate getById(
-            @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
-<span class="fc" id="L52">        UCSBDate ucsbDate = ucsbDateRepository.findById(id)</span>
-<span class="fc" id="L53">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBDate.class, id));</span>
-
-<span class="fc" id="L55">        return ucsbDate;</span>
-    }
-
     @Operation(summary= &quot;Create a new date&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @PostMapping(&quot;/post&quot;)
@@ -67,16 +56,27 @@ import java.time.LocalDateTime;
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
         // See: https://www.baeldung.com/spring-date-parameters
 
-<span class="fc" id="L70">        log.info(&quot;localDateTime={}&quot;, localDateTime);</span>
+<span class="fc" id="L59">        log.info(&quot;localDateTime={}&quot;, localDateTime);</span>
 
-<span class="fc" id="L72">        UCSBDate ucsbDate = new UCSBDate();</span>
-<span class="fc" id="L73">        ucsbDate.setQuarterYYYYQ(quarterYYYYQ);</span>
-<span class="fc" id="L74">        ucsbDate.setName(name);</span>
-<span class="fc" id="L75">        ucsbDate.setLocalDateTime(localDateTime);</span>
+<span class="fc" id="L61">        UCSBDate ucsbDate = new UCSBDate();</span>
+<span class="fc" id="L62">        ucsbDate.setQuarterYYYYQ(quarterYYYYQ);</span>
+<span class="fc" id="L63">        ucsbDate.setName(name);</span>
+<span class="fc" id="L64">        ucsbDate.setLocalDateTime(localDateTime);</span>
 
-<span class="fc" id="L77">        UCSBDate savedUcsbDate = ucsbDateRepository.save(ucsbDate);</span>
+<span class="fc" id="L66">        UCSBDate savedUcsbDate = ucsbDateRepository.save(ucsbDate);</span>
 
-<span class="fc" id="L79">        return savedUcsbDate;</span>
+<span class="fc" id="L68">        return savedUcsbDate;</span>
+    }
+
+    @Operation(summary= &quot;Get a single date&quot;)
+    @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
+    @GetMapping(&quot;&quot;)
+    public UCSBDate getById(
+            @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
+<span class="fc" id="L76">        UCSBDate ucsbDate = ucsbDateRepository.findById(id)</span>
+<span class="fc" id="L77">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBDate.class, id));</span>
+
+<span class="fc" id="L79">        return ucsbDate;</span>
     }
 
     @Operation(summary= &quot;Delete a UCSBDate&quot;)

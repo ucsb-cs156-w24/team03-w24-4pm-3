@@ -39,17 +39,6 @@ import javax.validation.Valid;
 <span class="fc" id="L39">        return commons;</span>
     }
 
-    @Operation(summary= &quot;Get a single commons&quot;)
-    @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
-    @GetMapping(&quot;&quot;)
-    public UCSBDiningCommons getById(
-            @Parameter(name=&quot;code&quot;) @RequestParam String code) {
-<span class="fc" id="L47">        UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)</span>
-<span class="fc" id="L48">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBDiningCommons.class, code));</span>
-
-<span class="fc" id="L50">        return commons;</span>
-    }
-
     @Operation(summary= &quot;Create a new commons&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @PostMapping(&quot;/post&quot;)
@@ -64,18 +53,29 @@ import javax.validation.Valid;
         )
         {
 
-<span class="fc" id="L67">        UCSBDiningCommons commons = new UCSBDiningCommons();</span>
-<span class="fc" id="L68">        commons.setCode(code);</span>
-<span class="fc" id="L69">        commons.setName(name);</span>
-<span class="fc" id="L70">        commons.setHasSackMeal(hasSackMeal);</span>
-<span class="fc" id="L71">        commons.setHasTakeOutMeal(hasTakeOutMeal);</span>
-<span class="fc" id="L72">        commons.setHasDiningCam(hasDiningCam);</span>
-<span class="fc" id="L73">        commons.setLatitude(latitude);</span>
-<span class="fc" id="L74">        commons.setLongitude(longitude);</span>
+<span class="fc" id="L56">        UCSBDiningCommons commons = new UCSBDiningCommons();</span>
+<span class="fc" id="L57">        commons.setCode(code);</span>
+<span class="fc" id="L58">        commons.setName(name);</span>
+<span class="fc" id="L59">        commons.setHasSackMeal(hasSackMeal);</span>
+<span class="fc" id="L60">        commons.setHasTakeOutMeal(hasTakeOutMeal);</span>
+<span class="fc" id="L61">        commons.setHasDiningCam(hasDiningCam);</span>
+<span class="fc" id="L62">        commons.setLatitude(latitude);</span>
+<span class="fc" id="L63">        commons.setLongitude(longitude);</span>
 
-<span class="fc" id="L76">        UCSBDiningCommons savedCommons = ucsbDiningCommonsRepository.save(commons);</span>
+<span class="fc" id="L65">        UCSBDiningCommons savedCommons = ucsbDiningCommonsRepository.save(commons);</span>
 
-<span class="fc" id="L78">        return savedCommons;</span>
+<span class="fc" id="L67">        return savedCommons;</span>
+    }
+
+    @Operation(summary= &quot;Get a single commons&quot;)
+    @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
+    @GetMapping(&quot;&quot;)
+    public UCSBDiningCommons getById(
+            @Parameter(name=&quot;code&quot;) @RequestParam String code) {
+<span class="fc" id="L75">        UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)</span>
+<span class="fc" id="L76">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBDiningCommons.class, code));</span>
+
+<span class="fc" id="L78">        return commons;</span>
     }
 
     @Operation(summary= &quot;Delete a UCSBDiningCommons&quot;)
