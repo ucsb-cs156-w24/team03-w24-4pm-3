@@ -33,6 +33,10 @@ import UCSBOrganizationsIndexPage from "main/pages/UCSBOrganizations/UCSBOrganiz
 import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganizations/UCSBOrganizationsCreatePage";
 import UCSBOrganizationsEditPage from "main/pages/UCSBOrganizations/UCSBOrganizationsEditPage";
 
+import UCSBMenuItemReviewsIndexPage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsIndexPage";
+import UCSBMenuItemReviewsCreatePage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsCreatePage";
+import UCSBMenuItemReviewsEditPage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsEditPage";
+
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -62,6 +66,22 @@ function App() {
             <>
               <Route exact path="/ucsbdates/edit/:id" element={<UCSBDatesEditPage />} />
               <Route exact path="/ucsbdates/create" element={<UCSBDatesCreatePage />} />
+            </>
+          )
+        }
+        {/* menuitem review */}
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/menuitemreview" element={<UCSBMenuItemReviewsIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/menuitemreview/edit/:id" element={<UCSBMenuItemReviewsEditPage />} />
+              <Route exact path="/menuitemreview/create" element={<UCSBMenuItemReviewsCreatePage />} />
             </>
           )
         }
