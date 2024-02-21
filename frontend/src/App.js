@@ -181,6 +181,22 @@ function App() {
             </>
           )
        }
+       {/* Menu Items */}
+       {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/ucsbdiningcommonsmenuitems" element={<UCSBDiningCommonsMenuItemIndexPage />} />
+            </>
+          )
+       }
+       {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/ucsbdiningcommonsmenuitems/create" element={<UCSBDiningCommonsMenuItemCreatePage />} />
+              <Route exact path="/ucsbdiningcommonsmenuitems/edit/:orgCode" element={<UCSBDiningCommonsMenuItemsEditPage />} />
+            </>
+          )
+       }
       </Routes>
     </BrowserRouter>
   );
