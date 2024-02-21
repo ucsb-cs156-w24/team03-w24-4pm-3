@@ -58,6 +58,7 @@ describe("ArticlesIndexPage tests", () => {
         });
         const button = screen.getByText(/Create Article/);
         expect(button).toHaveAttribute("href", "/articles/create");
+        expect(button).toHaveAttribute("style", "float: right;");
     });
 
     test("renders three articles correctly for regular user", async () => {
@@ -97,14 +98,18 @@ describe("ArticlesIndexPage tests", () => {
         );
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(1); });
+        const errorMessage = console.error.mock.calls[0][0];
+        expect(errorMessage).toMatch("Error communicating with backend via GET on /api/articles/all");
         restoreConsole();
+
+        expect(screen.queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
     });
 
     test("what happens when you click delete, admin", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
-        axiosMock.onDelete("/api/articles").reply(200, "Article with id 1 was deleted");
+        axiosMock.onDelete("/api/articles").reply(200, "Article with id 2 was deleted");
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -115,9 +120,11 @@ describe("ArticlesIndexPage tests", () => {
         );
 
         await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
+        expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
         const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+        expect(deleteButton).toBeInTheDocument();
         fireEvent.click(deleteButton);
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Article with id 1 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Article with id 2 was deleted") });
     });
 
 });
