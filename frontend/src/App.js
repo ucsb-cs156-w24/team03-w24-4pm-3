@@ -15,10 +15,6 @@ import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
 
-import UCSBMenuItemReviewsIndexPage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsIndexPage";
-import UCSBMenuItemReviewsCreatePage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsCreatePage";
-import UCSBMenuItemReviewsEditPage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsEditPage";
-
 import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
@@ -89,7 +85,7 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
-              <Route exact path="/recommendationrequest/edit/:id" element={<RecommendationRequestIndexPage />} />
+              <Route exact path="/recommendationrequest" element={<RecommendationRequestIndexPage />} />
             </>
           )
         }
@@ -117,21 +113,6 @@ function App() {
             </>
           )
         }
-        {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/menuitemreview" element={<UCSBMenuItemReviewsIndexPage />} />
-            </>
-          )
-        }
-        {
-          hasRole(currentUser, "ROLE_ADMIN") && (
-            <>
-              <Route exact path="/menuitemreview/edit/:id" element={<UCSBMenuItemReviewsEditPage />} />
-              <Route exact path="/menuitemreview/create" element={<UCSBMenuItemReviewsCreatePage />} />
-            </>
-          )
-        }
         {/* placeholder */}
         {
           hasRole(currentUser, "ROLE_USER") && (
@@ -148,7 +129,7 @@ function App() {
             </>
           )
         }
-        {/* articles */}
+         {/* articles */}
         {
          hasRole(currentUser, "ROLE_USER") && (
            <>
