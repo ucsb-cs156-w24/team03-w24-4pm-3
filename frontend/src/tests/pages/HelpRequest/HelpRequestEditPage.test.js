@@ -209,7 +209,7 @@ describe("HelpRequestEditPage tests", () => {
 
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("Help Request Updated - id: 3 requesterEmail: twentytwo@ucsb.edu");
-            expect(mockNavigate).toBeCalledWith({ "to": "/helprequest" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/helprequests" });
         });
 
 
