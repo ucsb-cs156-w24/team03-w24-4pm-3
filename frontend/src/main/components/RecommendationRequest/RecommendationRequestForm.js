@@ -153,6 +153,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             type="switch"
                             isInvalid={Boolean(errors.done)}
                             {...register("done")}
+                            
                         />
                     </Form.Group>
                 </Col>
