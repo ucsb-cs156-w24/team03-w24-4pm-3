@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-w24/team03-w24-4pm-3
 owner: ucsb-cs156-w24
 repo_name: team03-w24-4pm-3
-pull_requests: [{"author":{"id":"U_kgDOBXuwTQ","is_bot":false,"login":"hugolin0","name":""},"headRefName":"DiningCommonsMenuItemMutationFix","number":146,"title":"Disable Stryker on Specific Lines","url":"https://github.com/ucsb-cs156-w24/team03-w24-4pm-3/pull/146"}]
+pull_requests: []
