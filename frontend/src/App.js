@@ -37,6 +37,10 @@ import UCSBMenuItemReviewsIndexPage from "main/pages/UCSBMenuItemReviews/UCSBMen
 import UCSBMenuItemReviewsCreatePage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsCreatePage";
 import UCSBMenuItemReviewsEditPage from "main/pages/UCSBMenuItemReviews/UCSBMenuItemReviewsEditPage";
 
+import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
+import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
+import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
+
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -193,7 +197,7 @@ function App() {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
               <Route exact path="/ucsbdiningcommonsmenuitems/create" element={<UCSBDiningCommonsMenuItemCreatePage />} />
-              <Route exact path="/ucsbdiningcommonsmenuitems/edit/:orgCode" element={<UCSBDiningCommonsMenuItemsEditPage />} />
+              <Route exact path="/ucsbdiningcommonsmenuitems/edit/:orgCode" element={<UCSBDiningCommonsMenuItemEditPage />} />
             </>
           )
        }
