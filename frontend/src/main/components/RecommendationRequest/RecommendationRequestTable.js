@@ -65,7 +65,7 @@ export default function RecommendationRequestTable({ recommendationRequest, curr
     } 
 
     return <OurTable
-        data={recommendationRequest}
+        data={recommendationRequest} 
         columns={columns}
         testid={"RecommendationRequestTable"}
     />;
