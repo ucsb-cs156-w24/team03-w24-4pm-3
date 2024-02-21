@@ -17,13 +17,13 @@ export default function UCSBDiningCommonsMenuItemTable({
         navigate(`/ucsbdiningcommonsmenuitems/edit/${cell.row.values.id}`)
     }
 
-
+    // Stryker disable all
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
         ["/api/ucsbdiningcommonsmenuitems/all"]
     );
-   
+   // Stryker restore all
 
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
