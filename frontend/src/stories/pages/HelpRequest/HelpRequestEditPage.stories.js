@@ -23,7 +23,7 @@ Default.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/helprequests', (_req, res, ctx) => {
-            return res(ctx.json(helpRequestFixtures.threeHelpRequests[0]));
+            return res(ctx.json(helpRequestFixtures.threeRequests[0]));
         }),
         rest.put('/api/helprequests', async (req, res, ctx) => {
             var reqBody = await req.text();
