@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-w24/team03-w24-4pm-3
 owner: ucsb-cs156-w24
 repo_name: team03-w24-4pm-3
-pull_requests: [{"author":{"id":"U_kgDOBdHRmA","is_bot":false,"login":"srambhatla30","name":""},"headRefName":"Sid-HelpRequest","number":131,"title":"Sid help request merge to main","url":"https://github.com/ucsb-cs156-w24/team03-w24-4pm-3/pull/131"},{"author":{"id":"MDQ6VXNlcjY2ODkyOTQw","is_bot":false,"login":"konarkv","name":""},"headRefName":"Konark-MenuItems-Placeholders","number":129,"title":"Placeholders commit","url":"https://github.com/ucsb-cs156-w24/team03-w24-4pm-3/pull/129"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjY2ODkyOTQw","is_bot":false,"login":"konarkv","name":""},"headRefName":"Konark-MenuItems-Placeholders","number":132,"title":"Konark menu items placeholders","url":"https://github.com/ucsb-cs156-w24/team03-w24-4pm-3/pull/132"},{"author":{"id":"U_kgDOBdHRmA","is_bot":false,"login":"srambhatla30","name":""},"headRefName":"Sid-HelpRequest","number":131,"title":"Sid help request merge to main","url":"https://github.com/ucsb-cs156-w24/team03-w24-4pm-3/pull/131"}]
