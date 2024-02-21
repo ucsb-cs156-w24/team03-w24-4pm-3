@@ -6,7 +6,7 @@ import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
 export default function HelpRequestEditPage({storybook=false}) {
-  let { id } = useParams();
+  let { id } = useParams(); 
 
   const { data: helpRequest, _error, _status } =
       useBackend(
@@ -55,7 +55,7 @@ export default function HelpRequestEditPage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-      return <Navigate to="/helprequest" />
+      return <Navigate to="/helprequests" />
   }
 
   return (

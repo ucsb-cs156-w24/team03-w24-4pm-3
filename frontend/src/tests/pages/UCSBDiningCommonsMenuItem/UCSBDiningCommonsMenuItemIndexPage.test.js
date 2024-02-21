@@ -9,7 +9,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
 
-describe("PlaceholderIndexPage tests", () => {
+describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
 
@@ -42,3 +42,5 @@ describe("PlaceholderIndexPage tests", () => {
     });
 
 });
+
+
